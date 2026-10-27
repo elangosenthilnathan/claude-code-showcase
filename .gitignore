@@ -22,6 +22,9 @@ Thumbs.db
 
 # Claude Code local files
 .claude/settings.local.json
+elan_claude/settings.local.json
 .claude/user-team-info.json
+elan_claude/user-team-info.json
 .claude/tasks/
+elan_claude/tasks/
 CLAUDE.local.md

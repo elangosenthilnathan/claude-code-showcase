@@ -101,7 +101,7 @@ jobs:
 
             ## Your Tasks
 
-            1. **Read the code review standards**: Read `.claude/agents/code-reviewer.md` for the full checklist
+            1. **Read the code review standards**: Read `elan_claude/agents/code-reviewer.md` for the full checklist
 
             2. **Analyze all files in the directory**:
                - List all .ts and .tsx files (excluding .test., .spec., .stories.)

@@ -11,7 +11,7 @@
 ### UserPromptSubmit
 
 - **Skill Evaluation**: Analyzes prompts and suggests relevant skills
-  - **Script**: `.claude/hooks/skill-eval.sh`
+  - **Script**: `elan_claude/hooks/skill-eval.sh`
   - **Behavior**: Matches keywords, file paths, and patterns to suggest skills
 
 ### PreToolUse

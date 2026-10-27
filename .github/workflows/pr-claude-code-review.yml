@@ -64,9 +64,9 @@ jobs:
           timeout_minutes: 30
           track_progress: true
           prompt: |
-            Review this Pull Request using the standards in .claude/agents/code-reviewer.md
+            Review this Pull Request using the standards in elan_claude/agents/code-reviewer.md
 
-            1. Read .claude/agents/code-reviewer.md for the full checklist
+            1. Read elan_claude/agents/code-reviewer.md for the full checklist
             2. Run `git diff origin/${{ steps.pr-info.outputs.base_ref }}...HEAD` to see changes
             3. Apply the review checklist to modified files
             4. Provide feedback organized by severity (Critical, Warning, Suggestion)

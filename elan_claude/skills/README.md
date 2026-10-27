@@ -50,7 +50,7 @@ Skills are automatically invoked when Claude recognizes relevant context. Each s
 
 ## Adding New Skills
 
-1. Create directory: `.claude/skills/skill-name/`
+1. Create directory: `elan_claude/skills/skill-name/`
 2. Add `SKILL.md` (case-sensitive) with YAML frontmatter:
    ```yaml
    ---
@@ -65,7 +65,7 @@ Skills are automatically invoked when Claude recognizes relevant context. Each s
    ```
 3. Include standard sections: When to Use, Core Patterns, Anti-Patterns, Integration
 4. Add to this README
-5. Add triggers to `.claude/hooks/skill-rules.json`
+5. Add triggers to `elan_claude/hooks/skill-rules.json`
 
 **Important:** The `description` field is critical—Claude uses semantic matching on it to decide when to apply the skill. Include keywords users would naturally mention.
 
