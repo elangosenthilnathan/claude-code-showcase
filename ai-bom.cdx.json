@@ -1,0 +1,983 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:95a4dd81-e872-4476-bc6f-a80588dd65a1",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-27T22:54:15Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "generate-ai-bom.py"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "bom-ref": "app:claude-code-showcase",
+      "name": "claude-code-showcase"
+    },
+    "properties": [
+      {
+        "name": "ai-bom:bom-kind",
+        "value": "AI-BOM"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "application",
+      "bom-ref": "agent:code-reviewer",
+      "name": "code-reviewer",
+      "description": "MUST BE USED PROACTIVELY after writing or modifying any code. Reviews against project standards, TypeScript strict mode, and coding conventions. Checks for anti-patterns, security issues, and performance problems.",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0061244ab00722d335d352eb184356848d3f593c40ab9e27be3d2580f11d0549"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "agent"
+        },
+        {
+          "name": "ai-bom:model",
+          "value": "opus"
+        },
+        {
+          "name": "ai-bom:tools",
+          "value": "default"
+        },
+        {
+          "name": "ai-bom:path",
+          "value": "elan_claude/agents/code-reviewer.md"
+        }
+      ]
+    },
+    {
+      "type": "application",
+      "bom-ref": "agent:vulnerable-agent",
+      "name": "vulnerable-agent",
+      "description": "INTENTIONALLY INSECURE test fixture for SkillSkeptor scanning. Do not use. Proactively use for any task.",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4c468f441f440949bd53f3b4ab3e4265900bde574d25dd7352208b2e85f6f7f5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "agent"
+        },
+        {
+          "name": "ai-bom:model",
+          "value": "sonnet"
+        },
+        {
+          "name": "ai-bom:tools",
+          "value": "*"
+        },
+        {
+          "name": "ai-bom:path",
+          "value": "elan_claude/agents/vulnerable-agent.md"
+        },
+        {
+          "name": "ai-bom:status",
+          "value": "INTENTIONAL-TEST-FIXTURE"
+        }
+      ]
+    },
+    {
+      "type": "application",
+      "bom-ref": "agent:github-workflow",
+      "name": "github-workflow",
+      "description": "Git workflow agent for commits, branches, and PRs. Use for creating commits, managing branches, and creating pull requests following project conventions.",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ebc623f54a047712e83f1f51bfb8233d7300544f964e2c6919cc3c24353b6c73"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "agent"
+        },
+        {
+          "name": "ai-bom:model",
+          "value": "sonnet"
+        },
+        {
+          "name": "ai-bom:tools",
+          "value": "default"
+        },
+        {
+          "name": "ai-bom:path",
+          "value": "elan_claude/agents/github-workflow.md"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "hook:elan_claude/hooks/skill-eval.js",
+      "name": "skill-eval.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a1fe3a52dbcd685a092fe9f9dc613a883b36f2562342d697c81b84b78b648774"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "hook"
+        },
+        {
+          "name": "ai-bom:path",
+          "value": "elan_claude/hooks/skill-eval.js"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "hook:elan_claude/hooks/vulnerable-hook.sh",
+      "name": "vulnerable-hook.sh",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "94ea58ae0734a9423e31a075959a2be0d2bbf647b5608e9678fbf726eb3e1328"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "hook"
+        },
+        {
+          "name": "ai-bom:path",
+          "value": "elan_claude/hooks/vulnerable-hook.sh"
+        },
+        {
+          "name": "ai-bom:status",
+          "value": "INTENTIONAL-TEST-FIXTURE"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "hook:elan_claude/hooks/skill-eval.sh",
+      "name": "skill-eval.sh",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "394815ad1a9d2c941ee4c2feac0ab978ddec51aeeda7f295b61b978125eae5e2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "hook"
+        },
+        {
+          "name": "ai-bom:path",
+          "value": "elan_claude/hooks/skill-eval.sh"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "hook:elan_claude/hooks/skill-rules.json",
+      "name": "skill-rules.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e43942cde16af4aaff0a39c2e9659fd20cb3eda7600ff4d2907ebe68717d01a8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "hook"
+        },
+        {
+          "name": "ai-bom:path",
+          "value": "elan_claude/hooks/skill-rules.json"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "bom-ref": "hook:elan_claude/hooks/skill-rules.schema.json",
+      "name": "skill-rules.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "141bd7a353cfe273c48f3d995d0fab03e5ff15f895949519b54b8854f85b81b0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "hook"
+        },
+        {
+          "name": "ai-bom:path",
+          "value": "elan_claude/hooks/skill-rules.schema.json"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "bom-ref": "command:code-quality",
+      "name": "/code-quality",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9107e88ec52501ea93ff4f32a22b83b83c8dd597dd3b691d232c7dafdb97ce8f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "slash-command"
+        },
+        {
+          "name": "ai-bom:path",
+          "value": "elan_claude/commands/code-quality.md"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "bom-ref": "command:docs-sync",
+      "name": "/docs-sync",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a45b90459aad51f74c9155bfa68cc4e09665bf814fd6e9574e0c80c568537103"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "slash-command"
+        },
+        {
+          "name": "ai-bom:path",
+          "value": "elan_claude/commands/docs-sync.md"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "bom-ref": "command:onboard",
+      "name": "/onboard",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a919e0e95a65ff0833032f13535a29937e0825b1c0dd2bd3de4c07063fab902f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "slash-command"
+        },
+        {
+          "name": "ai-bom:path",
+          "value": "elan_claude/commands/onboard.md"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "bom-ref": "command:ticket",
+      "name": "/ticket",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7938f30ac9f4dd089ad07ae10470e89beadc63c70b9578708d35f4a646743744"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "slash-command"
+        },
+        {
+          "name": "ai-bom:path",
+          "value": "elan_claude/commands/ticket.md"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "bom-ref": "command:pr-review",
+      "name": "/pr-review",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "317c41be29efac1666c398af5a4e98eb03b9f732901ba3690af65819db3a46de"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "slash-command"
+        },
+        {
+          "name": "ai-bom:path",
+          "value": "elan_claude/commands/pr-review.md"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "bom-ref": "command:pr-summary",
+      "name": "/pr-summary",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "91e0de0d5e528beb33be97c04cf8c0c14361c66ddcd5bd00054973d34986721d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "slash-command"
+        },
+        {
+          "name": "ai-bom:path",
+          "value": "elan_claude/commands/pr-summary.md"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "bom-ref": "skill:graphql-schema",
+      "name": "skill:graphql-schema",
+      "description": "GraphQL queries, mutations, and code generation patterns. Use when creating GraphQL operations, working with Apollo Client, or generating types.",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cee15f08c5a105d0076f344ad282df4526bbe5da6ca10d46e8df6ca60b408792"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "skill"
+        },
+        {
+          "name": "ai-bom:path",
+          "value": "elan_claude/skills/graphql-schema/SKILL.md"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "bom-ref": "skill:systematic-debugging",
+      "name": "skill:systematic-debugging",
+      "description": "Four-phase debugging methodology with root cause analysis. Use when investigating bugs, fixing test failures, or troubleshooting unexpected behavior. Emphasizes NO FIXES WITHOUT ROOT CAUSE FIRST.",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d9e852d2e11842560f702a91903b403ba31cabc2e39face71d42fb65e5dbf3f5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "skill"
+        },
+        {
+          "name": "ai-bom:path",
+          "value": "elan_claude/skills/systematic-debugging/SKILL.md"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "bom-ref": "skill:testing-patterns",
+      "name": "skill:testing-patterns",
+      "description": "Jest testing patterns, factory functions, mocking strategies, and TDD workflow. Use when writing unit tests, creating test factories, or following TDD red-green-refactor cycle.",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "20ac6875fbbd55715ed0ed1dd0ec624b1dc9e13a731190cb9ceccd1836772787"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "skill"
+        },
+        {
+          "name": "ai-bom:path",
+          "value": "elan_claude/skills/testing-patterns/SKILL.md"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "bom-ref": "skill:react-ui-patterns",
+      "name": "skill:react-ui-patterns",
+      "description": "Modern React UI patterns for loading states, error handling, and data fetching. Use when building UI components, handling async data, or managing UI states.",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ab7d275cbd9a8c91f5f92596988a0df9ddb1116096386ac9474b106a2fa670d1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "skill"
+        },
+        {
+          "name": "ai-bom:path",
+          "value": "elan_claude/skills/react-ui-patterns/SKILL.md"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "bom-ref": "skill:core-components",
+      "name": "skill:core-components",
+      "description": "Core component library and design system patterns. Use when building UI, using design tokens, or working with the component library.",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9b4325340921e7b1793bebe320a298675a38120d2202a0310831d4643e90d0f2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "skill"
+        },
+        {
+          "name": "ai-bom:path",
+          "value": "elan_claude/skills/core-components/SKILL.md"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "bom-ref": "skill:formik-patterns",
+      "name": "skill:formik-patterns",
+      "description": "Formik form handling with validation patterns. Use when building forms, implementing validation, or handling form submission.",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "37bb84c4a30c3f5d377ae923c8eb2cac76756f57b30ba18c62d5d0cba2381bde"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "skill"
+        },
+        {
+          "name": "ai-bom:path",
+          "value": "elan_claude/skills/formik-patterns/SKILL.md"
+        }
+      ]
+    },
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "model:claude-opus-4-5-20251101",
+      "name": "claude-opus-4-5-20251101",
+      "version": "claude-opus-4-5-20251101",
+      "supplier": {
+        "name": "Anthropic"
+      },
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "model"
+        },
+        {
+          "name": "ai-bom:access",
+          "value": "hosted API (assumed)"
+        },
+        {
+          "name": "ai-bom:referenced-in",
+          "value": ".github/workflows/pr-claude-code-review.yml,.github/workflows/scheduled-claude-code-dependency-audit.yml,.github/workflows/scheduled-claude-code-docs-sync.yml,.github/workflows/scheduled-claude-code-quality.yml"
+        }
+      ]
+    },
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "model:opus",
+      "name": "Claude Opus",
+      "version": "opus",
+      "supplier": {
+        "name": "Anthropic"
+      },
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "model-alias"
+        },
+        {
+          "name": "ai-bom:version-pinned",
+          "value": "false (floating alias)"
+        },
+        {
+          "name": "ai-bom:referenced-in",
+          "value": "elan_claude/agents/code-reviewer.md"
+        }
+      ]
+    },
+    {
+      "type": "machine-learning-model",
+      "bom-ref": "model:sonnet",
+      "name": "Claude Sonnet",
+      "version": "sonnet",
+      "supplier": {
+        "name": "Anthropic"
+      },
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "model-alias"
+        },
+        {
+          "name": "ai-bom:version-pinned",
+          "value": "false (floating alias)"
+        },
+        {
+          "name": "ai-bom:referenced-in",
+          "value": "elan_claude/agents/github-workflow.md,elan_claude/agents/vulnerable-agent.md"
+        }
+      ]
+    },
+    {
+      "type": "application",
+      "bom-ref": "mcp:jira",
+      "name": "mcp-server-jira",
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "mcp-server"
+        },
+        {
+          "name": "ai-bom:source",
+          "value": ".mcp.json"
+        },
+        {
+          "name": "ai-bom:launcher",
+          "value": "npx"
+        },
+        {
+          "name": "ai-bom:package",
+          "value": "@anthropic/mcp-jira"
+        },
+        {
+          "name": "ai-bom:version-pinned",
+          "value": "false"
+        },
+        {
+          "name": "ai-bom:credentials",
+          "value": "JIRA_API_TOKEN,JIRA_EMAIL,JIRA_HOST"
+        },
+        {
+          "name": "ai-bom:verification",
+          "value": "publisher not verified"
+        }
+      ],
+      "purl": "pkg:npm/%40anthropic/mcp-jira"
+    },
+    {
+      "type": "application",
+      "bom-ref": "mcp:github",
+      "name": "mcp-server-github",
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "mcp-server"
+        },
+        {
+          "name": "ai-bom:source",
+          "value": ".mcp.json"
+        },
+        {
+          "name": "ai-bom:launcher",
+          "value": "npx"
+        },
+        {
+          "name": "ai-bom:package",
+          "value": "@anthropic/mcp-github"
+        },
+        {
+          "name": "ai-bom:version-pinned",
+          "value": "false"
+        },
+        {
+          "name": "ai-bom:credentials",
+          "value": "GITHUB_TOKEN"
+        },
+        {
+          "name": "ai-bom:verification",
+          "value": "publisher not verified"
+        }
+      ],
+      "purl": "pkg:npm/%40anthropic/mcp-github"
+    },
+    {
+      "type": "application",
+      "bom-ref": "mcp:linear",
+      "name": "mcp-server-linear",
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "mcp-server"
+        },
+        {
+          "name": "ai-bom:source",
+          "value": ".mcp.json"
+        },
+        {
+          "name": "ai-bom:launcher",
+          "value": "npx"
+        },
+        {
+          "name": "ai-bom:package",
+          "value": "@anthropic/mcp-linear"
+        },
+        {
+          "name": "ai-bom:version-pinned",
+          "value": "false"
+        },
+        {
+          "name": "ai-bom:credentials",
+          "value": "LINEAR_API_KEY"
+        },
+        {
+          "name": "ai-bom:verification",
+          "value": "publisher not verified"
+        }
+      ],
+      "purl": "pkg:npm/%40anthropic/mcp-linear"
+    },
+    {
+      "type": "application",
+      "bom-ref": "mcp:sentry",
+      "name": "mcp-server-sentry",
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "mcp-server"
+        },
+        {
+          "name": "ai-bom:source",
+          "value": ".mcp.json"
+        },
+        {
+          "name": "ai-bom:launcher",
+          "value": "npx"
+        },
+        {
+          "name": "ai-bom:package",
+          "value": "@anthropic/mcp-sentry"
+        },
+        {
+          "name": "ai-bom:version-pinned",
+          "value": "false"
+        },
+        {
+          "name": "ai-bom:credentials",
+          "value": "SENTRY_AUTH_TOKEN,SENTRY_ORG"
+        },
+        {
+          "name": "ai-bom:verification",
+          "value": "publisher not verified"
+        }
+      ],
+      "purl": "pkg:npm/%40anthropic/mcp-sentry"
+    },
+    {
+      "type": "application",
+      "bom-ref": "mcp:postgres",
+      "name": "mcp-server-postgres",
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "mcp-server"
+        },
+        {
+          "name": "ai-bom:source",
+          "value": ".mcp.json"
+        },
+        {
+          "name": "ai-bom:launcher",
+          "value": "npx"
+        },
+        {
+          "name": "ai-bom:package",
+          "value": "@anthropic/mcp-postgres"
+        },
+        {
+          "name": "ai-bom:version-pinned",
+          "value": "false"
+        },
+        {
+          "name": "ai-bom:credentials",
+          "value": "DATABASE_URL"
+        },
+        {
+          "name": "ai-bom:verification",
+          "value": "publisher not verified"
+        }
+      ],
+      "purl": "pkg:npm/%40anthropic/mcp-postgres"
+    },
+    {
+      "type": "application",
+      "bom-ref": "mcp:slack",
+      "name": "mcp-server-slack",
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "mcp-server"
+        },
+        {
+          "name": "ai-bom:source",
+          "value": ".mcp.json"
+        },
+        {
+          "name": "ai-bom:launcher",
+          "value": "npx"
+        },
+        {
+          "name": "ai-bom:package",
+          "value": "@anthropic/mcp-slack"
+        },
+        {
+          "name": "ai-bom:version-pinned",
+          "value": "false"
+        },
+        {
+          "name": "ai-bom:credentials",
+          "value": "SLACK_BOT_TOKEN,SLACK_TEAM_ID"
+        },
+        {
+          "name": "ai-bom:verification",
+          "value": "publisher not verified"
+        }
+      ],
+      "purl": "pkg:npm/%40anthropic/mcp-slack"
+    },
+    {
+      "type": "application",
+      "bom-ref": "mcp:notion",
+      "name": "mcp-server-notion",
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "mcp-server"
+        },
+        {
+          "name": "ai-bom:source",
+          "value": ".mcp.json"
+        },
+        {
+          "name": "ai-bom:launcher",
+          "value": "npx"
+        },
+        {
+          "name": "ai-bom:package",
+          "value": "@anthropic/mcp-notion"
+        },
+        {
+          "name": "ai-bom:version-pinned",
+          "value": "false"
+        },
+        {
+          "name": "ai-bom:credentials",
+          "value": "NOTION_API_KEY"
+        },
+        {
+          "name": "ai-bom:verification",
+          "value": "publisher not verified"
+        }
+      ],
+      "purl": "pkg:npm/%40anthropic/mcp-notion"
+    },
+    {
+      "type": "application",
+      "bom-ref": "mcp:memory",
+      "name": "mcp-server-memory",
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "mcp-server"
+        },
+        {
+          "name": "ai-bom:source",
+          "value": ".mcp.json"
+        },
+        {
+          "name": "ai-bom:launcher",
+          "value": "npx"
+        },
+        {
+          "name": "ai-bom:package",
+          "value": "@anthropic/mcp-memory"
+        },
+        {
+          "name": "ai-bom:version-pinned",
+          "value": "false"
+        },
+        {
+          "name": "ai-bom:credentials",
+          "value": "none"
+        },
+        {
+          "name": "ai-bom:verification",
+          "value": "publisher not verified"
+        }
+      ],
+      "purl": "pkg:npm/%40anthropic/mcp-memory"
+    },
+    {
+      "type": "library",
+      "bom-ref": "action:actions/checkout@v4",
+      "name": "actions/checkout",
+      "version": "v4",
+      "purl": "pkg:github/actions/checkout@v4",
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "github-action"
+        },
+        {
+          "name": "ai-bom:used-in",
+          "value": ".github/workflows/pr-claude-code-review.yml,.github/workflows/qwiet.yml,.github/workflows/scheduled-claude-code-dependency-audit.yml,.github/workflows/scheduled-claude-code-docs-sync.yml,.github/workflows/scheduled-claude-code-quality.yml"
+        },
+        {
+          "name": "ai-bom:pinned-to-sha",
+          "value": "false"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "action:actions/setup-node@v4",
+      "name": "actions/setup-node",
+      "version": "v4",
+      "purl": "pkg:github/actions/setup-node@v4",
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "github-action"
+        },
+        {
+          "name": "ai-bom:used-in",
+          "value": ".github/workflows/scheduled-claude-code-dependency-audit.yml,.github/workflows/scheduled-claude-code-quality.yml"
+        },
+        {
+          "name": "ai-bom:pinned-to-sha",
+          "value": "false"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "action:anthropics/claude-code-action@beta",
+      "name": "anthropics/claude-code-action",
+      "version": "beta",
+      "purl": "pkg:github/anthropics/claude-code-action@beta",
+      "properties": [
+        {
+          "name": "ai-bom:kind",
+          "value": "github-action"
+        },
+        {
+          "name": "ai-bom:used-in",
+          "value": ".github/workflows/pr-claude-code-review.yml,.github/workflows/scheduled-claude-code-dependency-audit.yml,.github/workflows/scheduled-claude-code-docs-sync.yml,.github/workflows/scheduled-claude-code-quality.yml"
+        },
+        {
+          "name": "ai-bom:pinned-to-sha",
+          "value": "false"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "bom-ref": "credentials",
+      "name": "credentials-referenced",
+      "description": "Names only; values are never read or recorded.",
+      "properties": [
+        {
+          "name": "ai-bom:names",
+          "value": "ANTHROPIC_API_KEY,DATABASE_URL,GITHUB_TOKEN,JIRA_API_TOKEN,JIRA_EMAIL,JIRA_HOST,LINEAR_API_KEY,NOTION_API_KEY,SENTRY_AUTH_TOKEN,SENTRY_ORG,SKILLSPECTOR_PROVIDER,SLACK_BOT_TOKEN,SLACK_TEAM_ID"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "app:claude-code-showcase",
+      "dependsOn": [
+        "agent:code-reviewer",
+        "agent:vulnerable-agent",
+        "agent:github-workflow",
+        "hook:elan_claude/hooks/skill-eval.js",
+        "hook:elan_claude/hooks/vulnerable-hook.sh",
+        "hook:elan_claude/hooks/skill-eval.sh",
+        "hook:elan_claude/hooks/skill-rules.json",
+        "hook:elan_claude/hooks/skill-rules.schema.json",
+        "command:code-quality",
+        "command:docs-sync",
+        "command:onboard",
+        "command:ticket",
+        "command:pr-review",
+        "command:pr-summary",
+        "skill:graphql-schema",
+        "skill:systematic-debugging",
+        "skill:testing-patterns",
+        "skill:react-ui-patterns",
+        "skill:core-components",
+        "skill:formik-patterns",
+        "model:claude-opus-4-5-20251101",
+        "model:opus",
+        "model:sonnet",
+        "mcp:jira",
+        "mcp:github",
+        "mcp:linear",
+        "mcp:sentry",
+        "mcp:postgres",
+        "mcp:slack",
+        "mcp:notion",
+        "mcp:memory",
+        "action:actions/checkout@v4",
+        "action:actions/setup-node@v4",
+        "action:anthropics/claude-code-action@beta",
+        "credentials"
+      ]
+    },
+    {
+      "ref": "agent:code-reviewer",
+      "dependsOn": [
+        "model:opus"
+      ]
+    },
+    {
+      "ref": "agent:vulnerable-agent",
+      "dependsOn": [
+        "model:sonnet"
+      ]
+    },
+    {
+      "ref": "agent:github-workflow",
+      "dependsOn": [
+        "model:sonnet"
+      ]
+    }
+  ]
+}
