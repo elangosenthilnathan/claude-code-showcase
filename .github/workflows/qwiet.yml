@@ -29,7 +29,7 @@ jobs:
       run: |
         curl https://cdn.shiftleft.io/download/sl > ./sl && chmod a+rx ${GITHUB_WORKSPACE}/sl 
 
-    - name: Run Harness Scan
+    - name: Run Harness Scan1
       shell: bash
       run: |
         ${GITHUB_WORKSPACE}/sl analyze --tag branch=${{ github.head_ref }} --verbose --wait --app claude-code-showcase1 .
