@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 """Generate a CycloneDX 1.6 AI-BOM for a repository (standard library only).
 
-Usage:  python3 generate-ai-bom.py [REPO_PATH] [-o ai-bom.cdx.json] [--name NAME]
+Usage:  python3 generate-ai-bom.py [REPO_PATH] [-o ai-bom.cdx.json] [--name NAME] [--format json|xml|both]
+
+Output format: json (default), xml (CycloneDX XML, e.g. for Qwiet --bom-path), or both.
+With xml, the default output name becomes ai-bom.cdx.xml; with both, -o gives the base name.
 
 Detects: LLM model references, agents, skills, slash commands, hooks, MCP servers,
 GitHub Actions, and credential NAMES (values are never read or written).
 It reflects only what is declared in the repo; it does not verify packages.
 """
 import argparse, datetime, hashlib, json, os, re, sys, uuid
+import xml.etree.ElementTree as ET
 from collections import Counter
 
 SKIP_DIRS = {".git", "node_modules", ".venv", "venv", "__pycache__", "dist", "build", ".next"}
@@ -62,14 +66,75 @@ def read(path, limit=1_000_000):
         return ""
 
 
+NS = "http://cyclonedx.org/schema/bom/1.6"
+# Child order required by the CycloneDX 1.6 XSD sequences
+COMP_ORDER = ["supplier", "author", "publisher", "group", "name", "version", "description", "scope",
+              "hashes", "licenses", "copyright", "cpe", "purl", "properties"]
+
+
+def _text(parent, tag, value):
+    e = ET.SubElement(parent, f"{{{NS}}}{tag}"); e.text = str(value); return e
+
+
+def _props(parent, props):
+    if props:
+        pe = ET.SubElement(parent, f"{{{NS}}}properties")
+        for p in props:
+            ET.SubElement(pe, f"{{{NS}}}property", name=p["name"]).text = str(p["value"])
+
+
+def _component(parent, c, tag="component"):
+    e = ET.SubElement(parent, f"{{{NS}}}{tag}", {"type": c["type"], **({"bom-ref": c["bom-ref"]} if "bom-ref" in c else {})})
+    for key in COMP_ORDER:
+        v = c.get(key)
+        if not v:
+            continue
+        if key == "supplier":
+            _text(ET.SubElement(e, f"{{{NS}}}supplier"), "name", v["name"])
+        elif key == "hashes":
+            he = ET.SubElement(e, f"{{{NS}}}hashes")
+            for h in v:
+                ET.SubElement(he, f"{{{NS}}}hash", alg=h["alg"]).text = h["content"]
+        elif key == "properties":
+            _props(e, v)
+        else:
+            _text(e, key, v)
+    return e
+
+
+def bom_to_xml(bom):
+    """Convert the CycloneDX 1.6 JSON structure produced above into CycloneDX 1.6 XML."""
+    ET.register_namespace("", NS)
+    root = ET.Element(f"{{{NS}}}bom", {"serialNumber": bom["serialNumber"], "version": str(bom["version"])})
+    md, mde = bom["metadata"], ET.SubElement(root, f"{{{NS}}}metadata")
+    _text(mde, "timestamp", md["timestamp"])
+    tools = ET.SubElement(ET.SubElement(mde, f"{{{NS}}}tools"), f"{{{NS}}}components")
+    for t in md["tools"]["components"]:
+        _component(tools, t)
+    _component(mde, md["component"])
+    _props(mde, md.get("properties"))
+    ce = ET.SubElement(root, f"{{{NS}}}components")
+    for c in bom["components"]:
+        _component(ce, c)
+    de = ET.SubElement(root, f"{{{NS}}}dependencies")
+    for d in bom["dependencies"]:
+        dep = ET.SubElement(de, f"{{{NS}}}dependency", ref=d["ref"])
+        for r in d.get("dependsOn", []):
+            ET.SubElement(dep, f"{{{NS}}}dependency", ref=r)
+    tree = ET.ElementTree(root); ET.indent(tree, space="  ")
+    return tree
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("path", nargs="?", default=".")
-    ap.add_argument("-o", "--output", default="ai-bom.cdx.json")
+    ap.add_argument("-o", "--output", help="output file (default ai-bom.cdx.json, or ai-bom.cdx.xml with --format xml)")
+    ap.add_argument("--format", choices=["json", "xml", "both"], default="json", help="output format (default: json)")
     ap.add_argument("--name", help="application name (default: folder name)")
     a = ap.parse_args()
     root = os.path.abspath(a.path)
-    out_abs = os.path.abspath(a.output)
+    out_abs = os.path.abspath(a.output or ("ai-bom.cdx.xml" if a.format == "xml" else "ai-bom.cdx.json"))
+    base_abs = re.sub(r"\.(json|xml)$", "", out_abs)
     rel = lambda p: os.path.relpath(p, root).replace(os.sep, "/")
     comps, deps, seen = [], {}, set()
 
@@ -80,7 +145,7 @@ def main():
         if depends:
             deps[c["bom-ref"]] = depends
 
-    files = [p for p in walk(root) if os.path.abspath(p) != out_abs]
+    files = [p for p in walk(root) if not os.path.abspath(p).startswith(base_abs + ".")]
 
     # ---- Models: explicit references in text files + frontmatter aliases
     model_use = {}
@@ -195,10 +260,18 @@ def main():
            "components": comps,
            "dependencies": [{"ref": top, "dependsOn": [c["bom-ref"] for c in comps]}] +
                            [{"ref": r, "dependsOn": d} for r, d in deps.items()]}
-    with open(out_abs, "w") as f:
-        json.dump(bom, f, indent=2); f.write("\n")
+    written = []
+    if a.format in ("json", "both"):
+        path = base_abs + ".json" if a.format == "both" else out_abs
+        with open(path, "w") as f:
+            json.dump(bom, f, indent=2); f.write("\n")
+        written.append(path)
+    if a.format in ("xml", "both"):
+        path = base_abs + ".xml" if a.format == "both" else out_abs
+        bom_to_xml(bom).write(path, encoding="utf-8", xml_declaration=True)
+        written.append(path)
     counts = Counter(c["type"] for c in comps)
-    print(f"Wrote {rel(out_abs)}: {len(comps)} components {dict(counts)}")
+    print(f"Wrote {', '.join(rel(w) for w in written)}: {len(comps)} components {dict(counts)}")
 
 
 if __name__ == "__main__":

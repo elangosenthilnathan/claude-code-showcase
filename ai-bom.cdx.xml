@@ -1,0 +1,463 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bom xmlns="http://cyclonedx.org/schema/bom/1.6" serialNumber="urn:uuid:4abbc522-f7f6-4575-8b9a-1d2e9ad9a306" version="1">
+  <metadata>
+    <timestamp>2026-10-27T23:18:37Z</timestamp>
+    <tools>
+      <components>
+        <component type="application">
+          <name>generate-ai-bom.py</name>
+        </component>
+      </components>
+    </tools>
+    <component type="application" bom-ref="app:claude-code-showcase">
+      <name>claude-code-showcase</name>
+    </component>
+    <properties>
+      <property name="ai-bom:bom-kind">AI-BOM</property>
+    </properties>
+  </metadata>
+  <components>
+    <component type="application" bom-ref="agent:code-reviewer">
+      <name>code-reviewer</name>
+      <description>MUST BE USED PROACTIVELY after writing or modifying any code. Reviews against project standards, TypeScript strict mode, and coding conventions. Checks for anti-patterns, security issues, and performance problems.</description>
+      <hashes>
+        <hash alg="SHA-256">0061244ab00722d335d352eb184356848d3f593c40ab9e27be3d2580f11d0549</hash>
+      </hashes>
+      <properties>
+        <property name="ai-bom:kind">agent</property>
+        <property name="ai-bom:model">opus</property>
+        <property name="ai-bom:tools">default</property>
+        <property name="ai-bom:path">elan_claude/agents/code-reviewer.md</property>
+      </properties>
+    </component>
+    <component type="application" bom-ref="agent:vulnerable-agent">
+      <name>vulnerable-agent</name>
+      <description>INTENTIONALLY INSECURE test fixture for SkillSkeptor scanning. Do not use. Proactively use for any task.</description>
+      <hashes>
+        <hash alg="SHA-256">4c468f441f440949bd53f3b4ab3e4265900bde574d25dd7352208b2e85f6f7f5</hash>
+      </hashes>
+      <properties>
+        <property name="ai-bom:kind">agent</property>
+        <property name="ai-bom:model">sonnet</property>
+        <property name="ai-bom:tools">*</property>
+        <property name="ai-bom:path">elan_claude/agents/vulnerable-agent.md</property>
+        <property name="ai-bom:status">INTENTIONAL-TEST-FIXTURE</property>
+      </properties>
+    </component>
+    <component type="application" bom-ref="agent:github-workflow">
+      <name>github-workflow</name>
+      <description>Git workflow agent for commits, branches, and PRs. Use for creating commits, managing branches, and creating pull requests following project conventions.</description>
+      <hashes>
+        <hash alg="SHA-256">ebc623f54a047712e83f1f51bfb8233d7300544f964e2c6919cc3c24353b6c73</hash>
+      </hashes>
+      <properties>
+        <property name="ai-bom:kind">agent</property>
+        <property name="ai-bom:model">sonnet</property>
+        <property name="ai-bom:tools">default</property>
+        <property name="ai-bom:path">elan_claude/agents/github-workflow.md</property>
+      </properties>
+    </component>
+    <component type="file" bom-ref="hook:elan_claude/hooks/skill-eval.js">
+      <name>skill-eval.js</name>
+      <hashes>
+        <hash alg="SHA-256">a1fe3a52dbcd685a092fe9f9dc613a883b36f2562342d697c81b84b78b648774</hash>
+      </hashes>
+      <properties>
+        <property name="ai-bom:kind">hook</property>
+        <property name="ai-bom:path">elan_claude/hooks/skill-eval.js</property>
+      </properties>
+    </component>
+    <component type="file" bom-ref="hook:elan_claude/hooks/vulnerable-hook.sh">
+      <name>vulnerable-hook.sh</name>
+      <hashes>
+        <hash alg="SHA-256">94ea58ae0734a9423e31a075959a2be0d2bbf647b5608e9678fbf726eb3e1328</hash>
+      </hashes>
+      <properties>
+        <property name="ai-bom:kind">hook</property>
+        <property name="ai-bom:path">elan_claude/hooks/vulnerable-hook.sh</property>
+        <property name="ai-bom:status">INTENTIONAL-TEST-FIXTURE</property>
+      </properties>
+    </component>
+    <component type="file" bom-ref="hook:elan_claude/hooks/skill-eval.sh">
+      <name>skill-eval.sh</name>
+      <hashes>
+        <hash alg="SHA-256">394815ad1a9d2c941ee4c2feac0ab978ddec51aeeda7f295b61b978125eae5e2</hash>
+      </hashes>
+      <properties>
+        <property name="ai-bom:kind">hook</property>
+        <property name="ai-bom:path">elan_claude/hooks/skill-eval.sh</property>
+      </properties>
+    </component>
+    <component type="file" bom-ref="hook:elan_claude/hooks/skill-rules.json">
+      <name>skill-rules.json</name>
+      <hashes>
+        <hash alg="SHA-256">e43942cde16af4aaff0a39c2e9659fd20cb3eda7600ff4d2907ebe68717d01a8</hash>
+      </hashes>
+      <properties>
+        <property name="ai-bom:kind">hook</property>
+        <property name="ai-bom:path">elan_claude/hooks/skill-rules.json</property>
+      </properties>
+    </component>
+    <component type="file" bom-ref="hook:elan_claude/hooks/skill-rules.schema.json">
+      <name>skill-rules.schema.json</name>
+      <hashes>
+        <hash alg="SHA-256">141bd7a353cfe273c48f3d995d0fab03e5ff15f895949519b54b8854f85b81b0</hash>
+      </hashes>
+      <properties>
+        <property name="ai-bom:kind">hook</property>
+        <property name="ai-bom:path">elan_claude/hooks/skill-rules.schema.json</property>
+      </properties>
+    </component>
+    <component type="data" bom-ref="command:code-quality">
+      <name>/code-quality</name>
+      <hashes>
+        <hash alg="SHA-256">9107e88ec52501ea93ff4f32a22b83b83c8dd597dd3b691d232c7dafdb97ce8f</hash>
+      </hashes>
+      <properties>
+        <property name="ai-bom:kind">slash-command</property>
+        <property name="ai-bom:path">elan_claude/commands/code-quality.md</property>
+      </properties>
+    </component>
+    <component type="data" bom-ref="command:docs-sync">
+      <name>/docs-sync</name>
+      <hashes>
+        <hash alg="SHA-256">a45b90459aad51f74c9155bfa68cc4e09665bf814fd6e9574e0c80c568537103</hash>
+      </hashes>
+      <properties>
+        <property name="ai-bom:kind">slash-command</property>
+        <property name="ai-bom:path">elan_claude/commands/docs-sync.md</property>
+      </properties>
+    </component>
+    <component type="data" bom-ref="command:onboard">
+      <name>/onboard</name>
+      <hashes>
+        <hash alg="SHA-256">a919e0e95a65ff0833032f13535a29937e0825b1c0dd2bd3de4c07063fab902f</hash>
+      </hashes>
+      <properties>
+        <property name="ai-bom:kind">slash-command</property>
+        <property name="ai-bom:path">elan_claude/commands/onboard.md</property>
+      </properties>
+    </component>
+    <component type="data" bom-ref="command:ticket">
+      <name>/ticket</name>
+      <hashes>
+        <hash alg="SHA-256">7938f30ac9f4dd089ad07ae10470e89beadc63c70b9578708d35f4a646743744</hash>
+      </hashes>
+      <properties>
+        <property name="ai-bom:kind">slash-command</property>
+        <property name="ai-bom:path">elan_claude/commands/ticket.md</property>
+      </properties>
+    </component>
+    <component type="data" bom-ref="command:pr-review">
+      <name>/pr-review</name>
+      <hashes>
+        <hash alg="SHA-256">317c41be29efac1666c398af5a4e98eb03b9f732901ba3690af65819db3a46de</hash>
+      </hashes>
+      <properties>
+        <property name="ai-bom:kind">slash-command</property>
+        <property name="ai-bom:path">elan_claude/commands/pr-review.md</property>
+      </properties>
+    </component>
+    <component type="data" bom-ref="command:pr-summary">
+      <name>/pr-summary</name>
+      <hashes>
+        <hash alg="SHA-256">91e0de0d5e528beb33be97c04cf8c0c14361c66ddcd5bd00054973d34986721d</hash>
+      </hashes>
+      <properties>
+        <property name="ai-bom:kind">slash-command</property>
+        <property name="ai-bom:path">elan_claude/commands/pr-summary.md</property>
+      </properties>
+    </component>
+    <component type="data" bom-ref="skill:graphql-schema">
+      <name>skill:graphql-schema</name>
+      <description>GraphQL queries, mutations, and code generation patterns. Use when creating GraphQL operations, working with Apollo Client, or generating types.</description>
+      <hashes>
+        <hash alg="SHA-256">cee15f08c5a105d0076f344ad282df4526bbe5da6ca10d46e8df6ca60b408792</hash>
+      </hashes>
+      <properties>
+        <property name="ai-bom:kind">skill</property>
+        <property name="ai-bom:path">elan_claude/skills/graphql-schema/SKILL.md</property>
+      </properties>
+    </component>
+    <component type="data" bom-ref="skill:systematic-debugging">
+      <name>skill:systematic-debugging</name>
+      <description>Four-phase debugging methodology with root cause analysis. Use when investigating bugs, fixing test failures, or troubleshooting unexpected behavior. Emphasizes NO FIXES WITHOUT ROOT CAUSE FIRST.</description>
+      <hashes>
+        <hash alg="SHA-256">d9e852d2e11842560f702a91903b403ba31cabc2e39face71d42fb65e5dbf3f5</hash>
+      </hashes>
+      <properties>
+        <property name="ai-bom:kind">skill</property>
+        <property name="ai-bom:path">elan_claude/skills/systematic-debugging/SKILL.md</property>
+      </properties>
+    </component>
+    <component type="data" bom-ref="skill:testing-patterns">
+      <name>skill:testing-patterns</name>
+      <description>Jest testing patterns, factory functions, mocking strategies, and TDD workflow. Use when writing unit tests, creating test factories, or following TDD red-green-refactor cycle.</description>
+      <hashes>
+        <hash alg="SHA-256">20ac6875fbbd55715ed0ed1dd0ec624b1dc9e13a731190cb9ceccd1836772787</hash>
+      </hashes>
+      <properties>
+        <property name="ai-bom:kind">skill</property>
+        <property name="ai-bom:path">elan_claude/skills/testing-patterns/SKILL.md</property>
+      </properties>
+    </component>
+    <component type="data" bom-ref="skill:react-ui-patterns">
+      <name>skill:react-ui-patterns</name>
+      <description>Modern React UI patterns for loading states, error handling, and data fetching. Use when building UI components, handling async data, or managing UI states.</description>
+      <hashes>
+        <hash alg="SHA-256">ab7d275cbd9a8c91f5f92596988a0df9ddb1116096386ac9474b106a2fa670d1</hash>
+      </hashes>
+      <properties>
+        <property name="ai-bom:kind">skill</property>
+        <property name="ai-bom:path">elan_claude/skills/react-ui-patterns/SKILL.md</property>
+      </properties>
+    </component>
+    <component type="data" bom-ref="skill:core-components">
+      <name>skill:core-components</name>
+      <description>Core component library and design system patterns. Use when building UI, using design tokens, or working with the component library.</description>
+      <hashes>
+        <hash alg="SHA-256">9b4325340921e7b1793bebe320a298675a38120d2202a0310831d4643e90d0f2</hash>
+      </hashes>
+      <properties>
+        <property name="ai-bom:kind">skill</property>
+        <property name="ai-bom:path">elan_claude/skills/core-components/SKILL.md</property>
+      </properties>
+    </component>
+    <component type="data" bom-ref="skill:formik-patterns">
+      <name>skill:formik-patterns</name>
+      <description>Formik form handling with validation patterns. Use when building forms, implementing validation, or handling form submission.</description>
+      <hashes>
+        <hash alg="SHA-256">37bb84c4a30c3f5d377ae923c8eb2cac76756f57b30ba18c62d5d0cba2381bde</hash>
+      </hashes>
+      <properties>
+        <property name="ai-bom:kind">skill</property>
+        <property name="ai-bom:path">elan_claude/skills/formik-patterns/SKILL.md</property>
+      </properties>
+    </component>
+    <component type="machine-learning-model" bom-ref="model:claude-opus-4-5-20251101">
+      <supplier>
+        <name>Anthropic</name>
+      </supplier>
+      <name>claude-opus-4-5-20251101</name>
+      <version>claude-opus-4-5-20251101</version>
+      <properties>
+        <property name="ai-bom:kind">model</property>
+        <property name="ai-bom:access">hosted API (assumed)</property>
+        <property name="ai-bom:referenced-in">.github/workflows/pr-claude-code-review.yml,.github/workflows/scheduled-claude-code-dependency-audit.yml,.github/workflows/scheduled-claude-code-docs-sync.yml,.github/workflows/scheduled-claude-code-quality.yml</property>
+      </properties>
+    </component>
+    <component type="machine-learning-model" bom-ref="model:opus">
+      <supplier>
+        <name>Anthropic</name>
+      </supplier>
+      <name>Claude Opus</name>
+      <version>opus</version>
+      <properties>
+        <property name="ai-bom:kind">model-alias</property>
+        <property name="ai-bom:version-pinned">false (floating alias)</property>
+        <property name="ai-bom:referenced-in">elan_claude/agents/code-reviewer.md</property>
+      </properties>
+    </component>
+    <component type="machine-learning-model" bom-ref="model:sonnet">
+      <supplier>
+        <name>Anthropic</name>
+      </supplier>
+      <name>Claude Sonnet</name>
+      <version>sonnet</version>
+      <properties>
+        <property name="ai-bom:kind">model-alias</property>
+        <property name="ai-bom:version-pinned">false (floating alias)</property>
+        <property name="ai-bom:referenced-in">elan_claude/agents/github-workflow.md,elan_claude/agents/vulnerable-agent.md</property>
+      </properties>
+    </component>
+    <component type="application" bom-ref="mcp:jira">
+      <name>mcp-server-jira</name>
+      <purl>pkg:npm/%40anthropic/mcp-jira</purl>
+      <properties>
+        <property name="ai-bom:kind">mcp-server</property>
+        <property name="ai-bom:source">.mcp.json</property>
+        <property name="ai-bom:launcher">npx</property>
+        <property name="ai-bom:package">@anthropic/mcp-jira</property>
+        <property name="ai-bom:version-pinned">false</property>
+        <property name="ai-bom:credentials">JIRA_API_TOKEN,JIRA_EMAIL,JIRA_HOST</property>
+        <property name="ai-bom:verification">publisher not verified</property>
+      </properties>
+    </component>
+    <component type="application" bom-ref="mcp:github">
+      <name>mcp-server-github</name>
+      <purl>pkg:npm/%40anthropic/mcp-github</purl>
+      <properties>
+        <property name="ai-bom:kind">mcp-server</property>
+        <property name="ai-bom:source">.mcp.json</property>
+        <property name="ai-bom:launcher">npx</property>
+        <property name="ai-bom:package">@anthropic/mcp-github</property>
+        <property name="ai-bom:version-pinned">false</property>
+        <property name="ai-bom:credentials">GITHUB_TOKEN</property>
+        <property name="ai-bom:verification">publisher not verified</property>
+      </properties>
+    </component>
+    <component type="application" bom-ref="mcp:linear">
+      <name>mcp-server-linear</name>
+      <purl>pkg:npm/%40anthropic/mcp-linear</purl>
+      <properties>
+        <property name="ai-bom:kind">mcp-server</property>
+        <property name="ai-bom:source">.mcp.json</property>
+        <property name="ai-bom:launcher">npx</property>
+        <property name="ai-bom:package">@anthropic/mcp-linear</property>
+        <property name="ai-bom:version-pinned">false</property>
+        <property name="ai-bom:credentials">LINEAR_API_KEY</property>
+        <property name="ai-bom:verification">publisher not verified</property>
+      </properties>
+    </component>
+    <component type="application" bom-ref="mcp:sentry">
+      <name>mcp-server-sentry</name>
+      <purl>pkg:npm/%40anthropic/mcp-sentry</purl>
+      <properties>
+        <property name="ai-bom:kind">mcp-server</property>
+        <property name="ai-bom:source">.mcp.json</property>
+        <property name="ai-bom:launcher">npx</property>
+        <property name="ai-bom:package">@anthropic/mcp-sentry</property>
+        <property name="ai-bom:version-pinned">false</property>
+        <property name="ai-bom:credentials">SENTRY_AUTH_TOKEN,SENTRY_ORG</property>
+        <property name="ai-bom:verification">publisher not verified</property>
+      </properties>
+    </component>
+    <component type="application" bom-ref="mcp:postgres">
+      <name>mcp-server-postgres</name>
+      <purl>pkg:npm/%40anthropic/mcp-postgres</purl>
+      <properties>
+        <property name="ai-bom:kind">mcp-server</property>
+        <property name="ai-bom:source">.mcp.json</property>
+        <property name="ai-bom:launcher">npx</property>
+        <property name="ai-bom:package">@anthropic/mcp-postgres</property>
+        <property name="ai-bom:version-pinned">false</property>
+        <property name="ai-bom:credentials">DATABASE_URL</property>
+        <property name="ai-bom:verification">publisher not verified</property>
+      </properties>
+    </component>
+    <component type="application" bom-ref="mcp:slack">
+      <name>mcp-server-slack</name>
+      <purl>pkg:npm/%40anthropic/mcp-slack</purl>
+      <properties>
+        <property name="ai-bom:kind">mcp-server</property>
+        <property name="ai-bom:source">.mcp.json</property>
+        <property name="ai-bom:launcher">npx</property>
+        <property name="ai-bom:package">@anthropic/mcp-slack</property>
+        <property name="ai-bom:version-pinned">false</property>
+        <property name="ai-bom:credentials">SLACK_BOT_TOKEN,SLACK_TEAM_ID</property>
+        <property name="ai-bom:verification">publisher not verified</property>
+      </properties>
+    </component>
+    <component type="application" bom-ref="mcp:notion">
+      <name>mcp-server-notion</name>
+      <purl>pkg:npm/%40anthropic/mcp-notion</purl>
+      <properties>
+        <property name="ai-bom:kind">mcp-server</property>
+        <property name="ai-bom:source">.mcp.json</property>
+        <property name="ai-bom:launcher">npx</property>
+        <property name="ai-bom:package">@anthropic/mcp-notion</property>
+        <property name="ai-bom:version-pinned">false</property>
+        <property name="ai-bom:credentials">NOTION_API_KEY</property>
+        <property name="ai-bom:verification">publisher not verified</property>
+      </properties>
+    </component>
+    <component type="application" bom-ref="mcp:memory">
+      <name>mcp-server-memory</name>
+      <purl>pkg:npm/%40anthropic/mcp-memory</purl>
+      <properties>
+        <property name="ai-bom:kind">mcp-server</property>
+        <property name="ai-bom:source">.mcp.json</property>
+        <property name="ai-bom:launcher">npx</property>
+        <property name="ai-bom:package">@anthropic/mcp-memory</property>
+        <property name="ai-bom:version-pinned">false</property>
+        <property name="ai-bom:credentials">none</property>
+        <property name="ai-bom:verification">publisher not verified</property>
+      </properties>
+    </component>
+    <component type="library" bom-ref="action:actions/checkout@v4">
+      <name>actions/checkout</name>
+      <version>v4</version>
+      <purl>pkg:github/actions/checkout@v4</purl>
+      <properties>
+        <property name="ai-bom:kind">github-action</property>
+        <property name="ai-bom:used-in">.github/workflows/pr-claude-code-review.yml,.github/workflows/qwiet.yml,.github/workflows/scheduled-claude-code-dependency-audit.yml,.github/workflows/scheduled-claude-code-docs-sync.yml,.github/workflows/scheduled-claude-code-quality.yml</property>
+        <property name="ai-bom:pinned-to-sha">false</property>
+      </properties>
+    </component>
+    <component type="library" bom-ref="action:actions/setup-node@v4">
+      <name>actions/setup-node</name>
+      <version>v4</version>
+      <purl>pkg:github/actions/setup-node@v4</purl>
+      <properties>
+        <property name="ai-bom:kind">github-action</property>
+        <property name="ai-bom:used-in">.github/workflows/scheduled-claude-code-dependency-audit.yml,.github/workflows/scheduled-claude-code-quality.yml</property>
+        <property name="ai-bom:pinned-to-sha">false</property>
+      </properties>
+    </component>
+    <component type="library" bom-ref="action:anthropics/claude-code-action@beta">
+      <name>anthropics/claude-code-action</name>
+      <version>beta</version>
+      <purl>pkg:github/anthropics/claude-code-action@beta</purl>
+      <properties>
+        <property name="ai-bom:kind">github-action</property>
+        <property name="ai-bom:used-in">.github/workflows/pr-claude-code-review.yml,.github/workflows/scheduled-claude-code-dependency-audit.yml,.github/workflows/scheduled-claude-code-docs-sync.yml,.github/workflows/scheduled-claude-code-quality.yml</property>
+        <property name="ai-bom:pinned-to-sha">false</property>
+      </properties>
+    </component>
+    <component type="data" bom-ref="credentials">
+      <name>credentials-referenced</name>
+      <description>Names only; values are never read or recorded.</description>
+      <properties>
+        <property name="ai-bom:names">ANTHROPIC_API_KEY,DATABASE_URL,GITHUB_TOKEN,JIRA_API_TOKEN,JIRA_EMAIL,JIRA_HOST,LINEAR_API_KEY,NOTION_API_KEY,SENTRY_AUTH_TOKEN,SENTRY_ORG,SKILLSPECTOR_PROVIDER,SLACK_BOT_TOKEN,SLACK_TEAM_ID</property>
+      </properties>
+    </component>
+  </components>
+  <dependencies>
+    <dependency ref="app:claude-code-showcase">
+      <dependency ref="agent:code-reviewer" />
+      <dependency ref="agent:vulnerable-agent" />
+      <dependency ref="agent:github-workflow" />
+      <dependency ref="hook:elan_claude/hooks/skill-eval.js" />
+      <dependency ref="hook:elan_claude/hooks/vulnerable-hook.sh" />
+      <dependency ref="hook:elan_claude/hooks/skill-eval.sh" />
+      <dependency ref="hook:elan_claude/hooks/skill-rules.json" />
+      <dependency ref="hook:elan_claude/hooks/skill-rules.schema.json" />
+      <dependency ref="command:code-quality" />
+      <dependency ref="command:docs-sync" />
+      <dependency ref="command:onboard" />
+      <dependency ref="command:ticket" />
+      <dependency ref="command:pr-review" />
+      <dependency ref="command:pr-summary" />
+      <dependency ref="skill:graphql-schema" />
+      <dependency ref="skill:systematic-debugging" />
+      <dependency ref="skill:testing-patterns" />
+      <dependency ref="skill:react-ui-patterns" />
+      <dependency ref="skill:core-components" />
+      <dependency ref="skill:formik-patterns" />
+      <dependency ref="model:claude-opus-4-5-20251101" />
+      <dependency ref="model:opus" />
+      <dependency ref="model:sonnet" />
+      <dependency ref="mcp:jira" />
+      <dependency ref="mcp:github" />
+      <dependency ref="mcp:linear" />
+      <dependency ref="mcp:sentry" />
+      <dependency ref="mcp:postgres" />
+      <dependency ref="mcp:slack" />
+      <dependency ref="mcp:notion" />
+      <dependency ref="mcp:memory" />
+      <dependency ref="action:actions/checkout@v4" />
+      <dependency ref="action:actions/setup-node@v4" />
+      <dependency ref="action:anthropics/claude-code-action@beta" />
+      <dependency ref="credentials" />
+    </dependency>
+    <dependency ref="agent:code-reviewer">
+      <dependency ref="model:opus" />
+    </dependency>
+    <dependency ref="agent:vulnerable-agent">
+      <dependency ref="model:sonnet" />
+    </dependency>
+    <dependency ref="agent:github-workflow">
+      <dependency ref="model:sonnet" />
+    </dependency>
+  </dependencies>
+</bom>
