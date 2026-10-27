@@ -1,0 +1,37 @@
+---
+name: Harness SAST/SCA/Secrets/Container Scanning 
+
+on:
+  pull_request:
+    branches:
+      - main  
+  workflow_dispatch:
+  push:
+    branches:
+      - main  
+
+jobs:
+  Harness-Static-Analysis:
+    runs-on: ubuntu-latest
+    #runs-on: windows-latest
+    container: shiftleft/core:latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # - name: Download ShiftLeft CLI1
+    #   shell: pwsh
+    #   run: | 
+    #     Invoke-WebRequest -Uri https://cdn.shiftleft.io/download/sl-latest-windows-x64.zip -UseBasicParsing -OutFile sl-latest-windows-x64.zip
+    #     Expand-Archive -Path sl-latest-windows-x64.zip -DestinationPath .
+     
+    - name: Download Harness CLI
+      run: |
+        curl https://cdn.shiftleft.io/download/sl > ./sl && chmod a+rx ${GITHUB_WORKSPACE}/sl 
+
+    - name: Run Harness Scan
+      shell: bash
+      run: |
+        ${GITHUB_WORKSPACE}/sl analyze --tag branch=${{ github.head_ref }} --verbose --wait --app "${GITHUB_REPOSITORY#*/}" .
+      env:
+        SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
